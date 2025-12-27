@@ -1,7 +1,6 @@
 
 import React, { useRef, useState, useEffect } from 'react';
 import { useMemoryStore } from '../hooks/useMemoryStore';
-import { getConflictGuidance } from '../services/wisdomService';
 import gsap from 'gsap';
 
 export const InnerHearth: React.FC = () => {
@@ -19,13 +18,26 @@ export const InnerHearth: React.FC = () => {
     }
   }, [isInnerHearthOpen]);
 
-  const handleHeal = async () => {
-    setLoading(true);
-    const advice = await getConflictGuidance("Seeking comfort and quiet warmth.");
-    setWhisper(advice);
-    setLoading(false);
-  };
+const handleHeal = async () => {
+  setLoading(true);
 
+  // Local fallback (offline, no API)
+  const localWisdom = [
+    "The stars breathe softly with you.",
+    "You are safe here. Rest.",
+    "Even the universe pauses to heal.",
+    "Warmth returns, slowly, kindly."
+  ];
+
+  const advice =
+    localWisdom[Math.floor(Math.random() * localWisdom.length)];
+
+  // small delay for UX
+  await new Promise((r) => setTimeout(r, 800));
+
+  setWhisper(advice);
+  setLoading(false);
+};
   if (!isInnerHearthOpen) return null;
 
   return (

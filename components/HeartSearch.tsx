@@ -1,7 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { useMemoryStore } from '../hooks/useMemoryStore';
-import { getHeartReflection } from '../services/wisdomService';
 import gsap from 'gsap';
 
 export const HeartSearch: React.FC = () => {
@@ -25,8 +24,15 @@ export const HeartSearch: React.FC = () => {
     if (!query.trim()) return;
     setLoading(true);
     
-    const result = await getHeartReflection(query, wisdomCache);
-    
+const localResponses = [
+  "The answer is already forming within you.",
+  "Search gently. Clarity arrives when rushed less.",
+  "Not everything needs resolution tonight.",
+  "The heart understands before words do."
+];
+
+const result =
+  localResponses[Math.floor(Math.random() * localResponses.length)];    
     // "Training" - If it came from the API, save it for future offline use
     if (result.source === 'api') {
       addWisdom(query, result.content);
