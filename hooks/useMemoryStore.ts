@@ -4,7 +4,7 @@ import { persist, createJSONStorage } from 'zustand/middleware';
 import { Memory, RelationshipGoal, CosmicState, OfflineWisdom } from '../types';
 
 const DEFAULT_MEMORIES: Memory[] = [
-  { id: 'm1-1', month: 1, type: 'text', title: 'The Spark', url: '', content: 'A simple hello that turned into our universe.', date: '2024-05-01' },
+  { id: 'm1-1', month: 1, type: 'text', title: 'The Start', url: '', content: 'The day everything changed..a simple vc.. two souls.. the day i prayed for my smile.. and i got the.. the day i asked God to make me happy.. and i got blessed.. with you jaana.', date: '2025-03-28' },
   { id: 'm9-1', month: 9, type: 'text', title: 'Infinite Growth', url: '', content: 'Nine months of blooming together.', date: '2025-02-01' }
 ];
 
